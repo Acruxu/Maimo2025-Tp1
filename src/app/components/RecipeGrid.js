@@ -24,6 +24,7 @@ const RecipesGrid = () => {
       } catch (error) {
         console.log("Mi error fue", error);
         setError(true);
+        setLoading(false);
       }
     };
 
@@ -32,19 +33,17 @@ const RecipesGrid = () => {
 
   return (
     <div className="recipes_grid">
-      
-    
-     
       {!loading &&
-      data.map((recipe) => (
-            <RecipeCard
-              key={recipe.id}
-              name={recipe.name}
-              image={recipe.image}
-              id={recipe.id}
-            />
-          ))}
-      {loading && <Loading/>}
+        data.map((recipe) => (
+          <RecipeCard
+            key={recipe.id}
+            name={recipe.name}
+            image={recipe.image}
+            id={recipe.id}
+          />
+        ))}
+      {loading && <Loading />}
+      {error && !loading && <p className="error_message">Ocurrió un error al cargar las recetas.</p>}
     </div>
   );
 };
@@ -52,7 +51,7 @@ const RecipesGrid = () => {
 export default RecipesGrid;
 
 //condicion ? si la condicion es verdadera: si la condicion es falsa if ternario
-  /*{!loading
+/*{!loading
         ? data.map((recipe) => (
             <RecipeCard
               key={recipe.id}

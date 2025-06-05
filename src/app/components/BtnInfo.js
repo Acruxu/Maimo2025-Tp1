@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const BtnInfo = () => {
+const BtnInfo = ({ id }) => {
   return (
-    <a className='bton_mas' href='#'>Ver mas</a>
-  )
-}
+    <a className="bton_mas" href={`/recipe/${id}`}>
+      Ver mas
+    </a>
+  );
+};
 
-export default BtnInfo
+export default BtnInfo;
